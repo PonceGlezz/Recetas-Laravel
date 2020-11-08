@@ -1,0 +1,13 @@
+body{
+    font-family: $parrafos-font-family;
+}
+
+.bg-primary .navbar-brand{
+    color: white;
+    font-family:$parrafos-font-family ;
+    font-size: 2;
+
+    &:hover{
+        color: white;
+    }
+}
