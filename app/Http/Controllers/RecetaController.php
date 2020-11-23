@@ -2,27 +2,91 @@
 
 namespace App\Http\Controllers;
 
+use App\Receta;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RecetaController extends Controller
 {
     /**
-     * Handle the incoming request.
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        return view('recetas.index');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('recetas.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke(Request $request)
+    public function store(Request $request)
+    {   
+        $data = request();
+
+        DB::table('recetas')->insert([
+            'titulo'=> $data['titulo']
+        ]);
+        
+        return redirect()->action('RecetaController@index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Receta  $receta
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Receta $receta)
     {
-   
+        //
+    }
 
-        $recetas = ['Receta Pizza', 'Receta Hamburguesa', 'Receta Tacos'];
-        $categorias = ['Comida Mexicana', 'Comida Argentina', 'Postres'];
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Receta  $receta
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Receta $receta)
+    {
+        //
+    }
 
-        return view('recetas.index')
-                ->with('recetas', $recetas)
-                ->with('categorias', $categorias);
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Receta  $receta
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, Receta $receta)
+    {
+        //
+    }
 
-                
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Receta  $receta
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Receta $receta)
+    {
+        //
     }
 }
