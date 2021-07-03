@@ -4,6 +4,11 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+import VueSweetalert2 from 'vue-sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
+ 
+
+
 require('./bootstrap');
 
 window.Vue = require('vue');
@@ -19,8 +24,13 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-
+//Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.use(VueSweetalert2);
+ 
+Vue.config.ignoredElements = ['trix-editor', 'trix-toolbar'];
+Vue.component('fecha-receta',require('./components/FechaReceta.vue').default)
+Vue.component('eliminar-receta',require('./components/EliminarReceta.vue').default)
+ 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
